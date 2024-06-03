@@ -1,5 +1,5 @@
 require("dotenv").config();
-
+import * as pg from "pg";
 const { Sequelize } = require("sequelize");
 // Option 3: Passing parameters separately (other dialects)
 const sequelize = new Sequelize(process.env.DB_DATABASE_NAME, process.env.DB_USERNAME, process.env.DB_PASSWORD, {
@@ -7,6 +7,7 @@ const sequelize = new Sequelize(process.env.DB_DATABASE_NAME, process.env.DB_USE
   port: process.env.DB_PORT,
   dialect: process.env.DB_DIALECT,
   logging: false,
+  dialectModule: pg,
   query: {
     raw: true,
   },
