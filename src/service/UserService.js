@@ -196,7 +196,11 @@ const countUser = () => {
 const getAllUser = () => {
   return new Promise(async (resolve, reject) => {
     try {
-      let listUser = await db.User.findAll();
+      let listUser = await db.User.findAll({
+        attributes: {
+          exclude: ["image", "password", "createdAt", "updatedAt"],
+        },
+      });
       if (listUser.length > 0) {
         resolve({
           status: "OK",
