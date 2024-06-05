@@ -221,6 +221,7 @@ const deleteUserById = (data) => {
     try {
       let checkUser = await db.User.findOne({
         where: { email: data.email1, id: data.id },
+        raw: false,
       });
       if (!checkUser) {
         resolve({

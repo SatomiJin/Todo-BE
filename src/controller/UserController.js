@@ -102,9 +102,11 @@ const deleteUserById = async (req, res) => {
     let response = await UserService.deleteUserById(req.headers);
     return res.status(200).json(response);
   } catch (e) {
+    console.log(e);
     return res.status(200).json({
-      status: "OK",
+      status: "ERROR",
       message: "Error from server...",
+      error: e,
     });
   }
 };
