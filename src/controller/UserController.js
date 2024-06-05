@@ -89,7 +89,8 @@ const getAllUser = async (req, res) => {
   try {
     let response = await UserService.getAllUser();
     return res.status(200).json(response);
-  } catch {
+  } catch (e) {
+    console.log(e);
     return res.status(200).json({
       status: "ERROR",
       message: "Error from server...",
